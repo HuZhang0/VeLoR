@@ -1,0 +1,15 @@
+[submodule "lib/alice"]
+	path = lib/alice
+	url = https://github.com/lsils/alice.git
+[submodule "lib/mockturtle"]
+	path = lib/mockturtle
+	url = https://github.com/lsils/mockturtle.git
+[submodule "lib/minisat"]
+	path = lib/minisat
+	url = https://github.com/niklasso/minisat.git
+[submodule "lib/glucose"]
+	path = lib/glucose
+	url = https://github.com/audemard/glucose.git
+[submodule "lib/cadical"]
+	path = lib/cadical
+	url = https://github.com/arminbiere/cadical.git

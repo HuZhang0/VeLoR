@@ -1,0 +1,47 @@
+# Build folders
+build/
+debug/
+bin/
+dist/
+out/
+
+# Intermediate build files
+*.o
+*.obj
+*.so
+# *.a
+*.lib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake specific
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+# Makefile
+
+# IDE specific
+.vscode/
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+abc.history
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+
+# Test files
+*.csv
+*.history
+*~
