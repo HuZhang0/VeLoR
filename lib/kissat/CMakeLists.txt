@@ -12,8 +12,15 @@ ExternalProject_Add(
     kissat_external
     SOURCE_DIR ${KISSAT_SOURCE_DIR}
     BINARY_DIR ${KISSAT_BUILD_DIR}
-    CONFIGURE_COMMAND cd ${KISSAT_SOURCE_DIR} && ./configure
-    BUILD_COMMAND cd ${KISSAT_SOURCE_DIR} && make
+    # Kissat's configure script creates a source-tree symlink.  Remove a
+    # stale/dangling link first so repeated CMake builds remain idempotent.
+    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E chdir ${KISSAT_SOURCE_DIR}
+                      sh -c "rm -f src/makefile && ./configure"
+    # Build only the library.  The standalone Kissat executable expects its
+    # own embedded Kitten object, which would collide with CaDiCaL's Kitten
+    # implementation when both static libraries are linked into VeLoR.
+    BUILD_COMMAND ${CMAKE_COMMAND} -E chdir ${KISSAT_SOURCE_DIR}/build
+                  make libkissat.a
     INSTALL_COMMAND ""
     BUILD_BYPRODUCTS ${KISSAT_SOURCE_DIR}/build/libkissat.a
 )
@@ -37,4 +44,4 @@ add_dependencies(kissat kissat_external)
 target_link_libraries(kissat INTERFACE m)
 
 # 确保库文件存在时才能使用
-set_property(TARGET kissat PROPERTY IMPORTED_LOCATION_EXISTS TRUE) 
+set_property(TARGET kissat PROPERTY IMPORTED_LOCATION_EXISTS TRUE)

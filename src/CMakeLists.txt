@@ -21,6 +21,6 @@ target_include_directories(velor PRIVATE
     ${CMAKE_SOURCE_DIR}/lib/cadical/src
 )
 
-target_link_libraries(velor PRIVATE alice mockturtle kissat glucosep minisat-lib-static cadical)
+target_link_libraries(velor PRIVATE alice mockturtle cadical kissat glucosep minisat-lib-static)
 
 install(TARGETS velor RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

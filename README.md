@@ -13,7 +13,7 @@ VeLoR is a Verification-oriented Logic Representation and parallel Combinational
 ## Build
 
 ```bash
-git clone https://github.com/HuZhang0/VeLoR.git
+git clone --recurse-submodules https://github.com/HuZhang0/VeLoR.git
 cd velor
 cmake -S . -B build
 cmake --build build -j$(nproc)
@@ -29,7 +29,7 @@ Requirements: CMake 3.15+, a C++17 compiler, POSIX environment. The binary is wr
 
 ```text
 velor> read_aiger example.aig
-velor> vlr -a -g /home/huzhang/pace/src/sat_lib/sat.genlib   # map AIG into VeLoR
+velor> vlr -a -g src/sat_lib/sat.genlib   # map AIG into VeLoR
 velor> kissat -p 8 -C vlr -l   # parallel CEC with 8 processes, VLR-based CNF
 velor> glucose -v
 velor> minisat -v
